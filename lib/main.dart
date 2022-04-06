@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:pokemon_app/route/route_page.dart';
+import 'package:pokemon_app/screens/home_page_pokemon.dart';
 
 void main() {
   runApp(const MyApp());
@@ -16,7 +18,8 @@ class MyApp extends StatelessWidget {
        
         primarySwatch: Colors.blue,
       ),
-      home: const HomePage(),
+      initialRoute: "/",
+      onGenerateRoute: (settings) => RouteGenerator.generateRoute(settings),
     );
   }
 }
