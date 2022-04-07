@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:pokemon_app/model/model_pokemon.dart';
+import 'package:pokemon_app/screens/about/detail_data.dart';
 import 'package:pokemon_app/service/service_pokemon.dart';
 
 class AboutPage extends StatelessWidget {
@@ -67,37 +68,120 @@ class AboutPage extends StatelessWidget {
                 ),
               ],
             ),
-            Stack(children: [
-              Container(
-                margin: const EdgeInsets.fromLTRB(20, 60, 20, 10),
-                height: MediaQuery.of(context).size.height * 0.25,
-                decoration: BoxDecoration(
-                  color: Color(0xFFFC7FCC),
-                  borderRadius: BorderRadius.circular(20.0),
-                ),
-              ),
-              Positioned(
-                top: 10,
-                child: Padding(
-                  padding: const EdgeInsets.symmetric(
-                    horizontal: 20,
+            Stack(
+              children: [
+                Container(
+                  margin: const EdgeInsets.fromLTRB(20, 60, 20, 10),
+                  height: MediaQuery.of(context).size.height * 0.25,
+                  decoration: BoxDecoration(
+                    color: Color(0xFFFC7FCC),
+                    borderRadius: BorderRadius.circular(20.0),
                   ),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      Text(
-                        "#" + data.num.toString(),
-                        style: const TextStyle(
-                          color: Color(0xFFFC7CFF),
-                          fontSize: 18.0,
-                          fontWeight: FontWeight.bold,
+                ),
+                Positioned(
+                  top: 10,
+                  child: Padding(
+                    padding: const EdgeInsets.symmetric(
+                      horizontal: 20,
+                    ),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Text(
+                          "#" + data.num.toString(),
+                          style: const TextStyle(
+                            color: Color(0xFFFC7CFF),
+                            fontSize: 18.0,
+                            fontWeight: FontWeight.bold,
+                          ),
                         ),
-                      ),
-                    ],
+                        SizedBox(
+                          width: MediaQuery.of(context).size.width * 0.6,
+                        ),
+                        Text(
+                          data.name.toString(),
+                          style: const TextStyle(
+                            color: Colors.black,
+                            fontSize: 18.0,
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ),
+                      ],
+                    ),
                   ),
                 ),
+                Positioned(
+                  left: MediaQuery.of(context).size.width * 0.15,
+                  bottom: 20,
+                  child: Image.network(
+                    data.img.toString(),
+                    height: MediaQuery.of(context).size.height * 0.3,
+                    width: MediaQuery.of(context).size.width * 0.7,
+                    fit: BoxFit.cover,
+                  ),
+                ),
+              ],
+            ),
+            Padding(
+              padding: const EdgeInsets.symmetric(vertical: 10),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceAround,
+                children: [
+                  ElevatedButton(
+                    onPressed: () {},
+                    child: const Text(
+                      "Fuego",
+                      style: TextStyle(
+                        fontWeight: FontWeight.bold,
+                        fontSize: 18.0,
+                      ),
+                    ),
+                    style: ElevatedButton.styleFrom(
+                      padding: const EdgeInsets.symmetric(
+                          horizontal: 55, vertical: 12),
+                      primary: const Color(0xFFFCA600),
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(10),
+                      ),
+                    ),
+                  ),
+                  ElevatedButton(
+                    onPressed: () {},
+                    child: const Text(
+                      "Valador",
+                      style: TextStyle(
+                          fontWeight: FontWeight.bold, fontSize: 18.0),
+                    ),
+                    style: ElevatedButton.styleFrom(
+                      padding: const EdgeInsets.symmetric(
+                          horizontal: 55, vertical: 12),
+                      primary: const Color(0xFF0083FC),
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(10),
+                      ),
+                    ),
+                  ),
+                ],
               ),
-            ]),
+            ),
+            Expanded(
+              child: Stack(
+                children: [
+                  DetailedDatas(
+                    data: data,
+                  ),
+                  Positioned(
+                    bottom: -10,
+                    right: 0,
+                    child: SizedBox(
+                      height: 100,
+                      width: 200,
+                      child: Image.asset("assets/images/botton_img.png"),
+                    ),
+                  ),
+                ],
+              ),
+            ),
           ],
         ),
       ),

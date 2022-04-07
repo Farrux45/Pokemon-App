@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:pokemon_app/model/model_pokemon.dart';
 import 'package:pokemon_app/screens/about/about.dart';
 import 'package:pokemon_app/screens/home_page_pokemon.dart';
@@ -14,13 +15,15 @@ class RouteGenerator {
         );
       case '/about':
         return MaterialPageRoute(
-          builder: (_) => AboutPage(),
-          data: (args as Pokemon),
+          builder: (_) => AboutPage(
+            data: (args as Pokemon),
+          ),
         );
       case '/search':
         return MaterialPageRoute(
-          builder: (_) => SearchPage(),
-          data: (args as List<Pokemon>),
+          builder: (_) => SearchPage(
+            data: (args as List<Pokemon>),
+          ),
         );
     }
   }

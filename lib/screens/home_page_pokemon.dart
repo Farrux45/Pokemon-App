@@ -25,15 +25,29 @@ class _HomePageState extends State<HomePage> {
               child: Image.asset("assets/images/pokemon.png"),
             ),
             Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 20.0),
-                child: InkWell(
-                  onTap: () async {
-                    List<Pokemon>? data;
-                    await ServicePokemon.getData()
-                        .then((value) => data = value.pokemon);
-                    Navigator.pushNamed(context, "/search", arguments: data);
-                  },
-                )),
+              padding: const EdgeInsets.symmetric(horizontal: 20.0),
+              child: InkWell(
+                onTap: () async {
+                  List<Pokemon>? data;
+                  await ServicePokemon.getData()
+                      .then((value) => data = value.pokemon);
+                  Navigator.pushNamed(context, "/search", arguments: data);
+                },
+                child: TextFormField(
+                  enabled: false,
+                  textAlign: TextAlign.center,
+                  decoration: InputDecoration(
+                    filled: true,
+                    fillColor: Colors.grey.shade300,
+                    hintText: "Buskar Pokemon",
+                    enabledBorder: OutlineInputBorder(
+                      borderSide: const BorderSide(color: Colors.white),
+                      borderRadius: BorderRadius.circular(30.0),
+                    )
+                  )
+                ),
+              ),
+            ),
           ],
         ),
       ),
